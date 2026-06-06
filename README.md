@@ -1,12 +1,11 @@
-# Tool-Use DPO Negative Sources: Reproducibility Artifacts
+# Tool-Use DPO Negative Sources
 
-This repository contains the reproducibility artifacts for the technical report:
+Reproducibility materials for the technical report:
 
 **A Fixed-Budget Empirical Study of Tool-Use DPO: Negative Sources, Checkpoints,
 and Pareto Trade-offs**
 
 ```text
-Artifact release: technical-report companion repository
 Base model family: Qwen3
 Shared SFT reference: r004
 Main DPO/control runs: r028, r029, s3d001, s3d002
@@ -14,17 +13,15 @@ Primary metrics: BFCL core, When2Call behavior accuracy, When2Call macro F1, IFE
 Main claim: fixed-budget source-native recipe comparison, not source-intrinsic causal ranking
 ```
 
-The scope is artifact-level reproduction: verifying the report's released
-tables, bootstrap summaries, contamination/overlap checks, and Pareto figures
-from aggregate and sanitized files.
+The goal here is narrow: make the report's tables, confidence intervals,
+overlap checks, and Pareto figures easy to verify from released artifacts.
 
-Full DPO retraining and raw benchmark reconstruction are outside the default
-public release scope because they require upstream dataset access, restricted
-raw artifacts, and substantial GPU resources. The released scripts and artifacts
-are intended to verify the reported results, not to serve as an end-to-end
-training pipeline.
+This is not an end-to-end training release. Full DPO retraining and raw
+benchmark reconstruction require upstream dataset access, restricted raw
+artifacts, and substantial GPU resources, so they are outside the default public
+scope.
 
-## Release Status
+## What You Can Check
 
 | Check | Status | Command or file |
 |---|---:|---|
@@ -35,30 +32,25 @@ training pipeline.
 | Grouped bootstrap recomputation | Supported | `python scripts/compute_grouped_bootstrap.py --bootstrap-iterations 1000` |
 | Raw/private data exclusion policy | Documented | `docs/redistribution_policy.md` |
 
-## What Is Included
+## Contents
 
-- Aggregate Stage3d and Stage4 CSV/JSON artifacts used by the report tables.
-- Sanitized per-example evaluation rows with prompt IDs/hashes, metric flags,
+- Aggregate CSV/JSON results used in the report tables.
+- Sanitized per-example evaluation rows: prompt IDs and hashes, metric flags,
   generated-output hashes, and token counts.
-- Pairwise and grouped bootstrap CI summaries.
+- Pairwise and grouped bootstrap summaries.
 - Pareto point tables, figure inputs, and regenerated SVG figures.
-- Stage1/Stage2 contamination and Stage3d train-pool overlap summaries released
-  as hash-only artifacts.
-- Run inventory, DPO/evaluation configuration notes, benchmark versions, and
-  exact evaluator/parser notes where recoverable from local artifacts.
-- License, data access, redistribution, reference verification, and claim-scope
-  documentation.
-- Release-readiness notes for the report-linked artifact repository.
-- Verification scripts for artifact integrity, release hygiene, tables, figures,
-  and overlap checks.
+- Hash-only contamination and train-pool overlap reports.
+- Run inventory, benchmark versions, DPO/evaluation config notes, and recovered
+  evaluator/parser details.
+- Data access, license, redistribution, reference, and claim-scope notes.
+- Small scripts for checking the artifacts and regenerating tables/figures.
 
 ## Data Boundary
 
-The repository does not redistribute raw benchmark data, benchmark prompt text,
-full processed DPO pair files, raw generated benchmark outputs, private audit
-materials, credentials, or model/adapter weights. See
-`docs/redistribution_policy.md` and `docs/data_availability_statement.md` for
-the source-specific policy.
+Raw benchmark data, benchmark prompt text, full processed DPO pairs, raw
+generated benchmark outputs, private audit materials, credentials, and
+model/adapter weights are not redistributed here. See
+`docs/redistribution_policy.md` and `docs/data_availability_statement.md`.
 
 ## Quick Start
 
@@ -72,10 +64,8 @@ python scripts/reproduce_figures.py
 pytest
 ```
 
-The default reproducibility target is artifact-level reproduction of the report's
-numbers and figures. Full DPO retraining is outside the default public release
-scope and requires upstream dataset access, restricted raw artifacts, and
-substantial GPU resources.
+These commands reproduce the released tables, bootstrap summaries, and figure
+inputs from the files in this repository.
 
 ## Repository Layout
 
@@ -84,9 +74,9 @@ artifacts/   Public aggregate artifacts used by the report
 configs/     Run inventory, benchmark notes, and artifact manifest
 results/     Sanitized per-example and aggregate evaluation outputs
 docs/        Reproduction, data access, and claim-scope documentation
-scripts/     User-facing reproduction and verification commands
+scripts/     Reproduction and verification commands
 src/         Python package used by the scripts
-tests/       Lightweight artifact and script smoke tests
+tests/       Lightweight smoke tests
 ```
 
 ## Main Commands
@@ -95,25 +85,27 @@ tests/       Lightweight artifact and script smoke tests
 python scripts/verify_artifacts.py
 ```
 
-Checks required public artifacts, rejects raw/private/large forbidden files, and
-writes a release hygiene summary.
+Checks the artifact manifest and rejects raw/private files that should not be in
+the public release.
 
 ```bash
 python scripts/verify_overlap.py
 ```
 
 Checks the released Stage1/Stage2 contamination reports and Stage3d train-pool
-overlap summaries. To recompute from local private pair artifacts, run
-`python scripts/verify_overlap.py --workspace-root .. --write-artifacts` from
-the repository root.
+overlap summaries. If the private pair artifacts are available locally, they can
+be recomputed with:
+
+```bash
+python scripts/verify_overlap.py --workspace-root .. --write-artifacts
+```
 
 ```bash
 python scripts/compute_grouped_bootstrap.py --bootstrap-iterations 1000
 ```
 
 Recomputes grouped bootstrap CIs from sanitized per-example primary evaluation
-outputs. The bootstrap unit is `prompt_id`; intervals are percentile CIs and
-reflect evaluation-sample uncertainty only.
+outputs. The bootstrap unit is `prompt_id`; intervals are percentile CIs.
 
 ```bash
 python scripts/reproduce_tables.py
@@ -129,38 +121,32 @@ Regenerates the public Pareto SVG from `artifacts/stage4/pareto/pareto_points.cs
 
 ## Evaluation Outputs
 
-`results/per_example/` contains sanitized per-example evaluation outputs for
-artifact-level verification. These files exclude prompt text, tool schemas,
-generated text, and benchmark raw data. They retain prompt IDs/hashes, metric
-components, correctness flags, parse/schema flags, behavior labels, and generated
-output hashes.
+`results/per_example/` contains sanitized per-example evaluation outputs. The
+files keep prompt IDs/hashes, metric components, parse/schema flags, behavior
+labels, token counts, and generated-output hashes. They do not include prompt
+text, tool schemas, generated text, or benchmark raw data.
 
 `results/aggregate/` contains absolute and delta metrics used to trace the
 reported point estimates.
 
 ## Citation
 
-Use `CITATION.cff` for citation metadata. Dataset and benchmark attribution rules
-are documented in `docs/data_license_table.md` and `docs/data_and_model_access.md`.
+Use `CITATION.cff` for citation metadata. Dataset and benchmark attribution
+notes are in `docs/data_license_table.md` and `docs/data_and_model_access.md`.
 
-## Release Notes for Readers
+## Notes
 
-- The released per-example files are sanitized: they do not include prompt text,
-  tool schemas, generated text, or benchmark raw data.
 - Bootstrap intervals use `prompt_id` as the grouped resampling unit with 1000
-  iterations and percentile confidence intervals.
+  iterations.
 - Stage3d comparisons are fixed-budget, source-native recipe comparisons. They
   should not be read as source-intrinsic causal rankings.
-- This repository verifies released results from sanitized artifacts; it is not
-  an end-to-end raw-data preprocessing, DPO training, and inference pipeline.
-- The public artifact manifest records file sizes and SHA-256 hashes in
-  `configs/artifact_manifest.json`.
+- `configs/artifact_manifest.json` records file sizes and SHA-256 hashes for the
+  released files.
 - The pre-release checklist is summarized in `docs/release_readiness.md`.
 
 ## Data Availability Statement
 
-Due to licensing and redistribution constraints, some raw benchmark and training
-examples are not redistributed. This repository provides run-level metadata,
-sanitized evaluation outputs, aggregate metrics, bootstrap artifacts, and figure
-generation scripts sufficient to verify the reported tables, confidence
-intervals, and figures.
+Some raw benchmark and training examples cannot be redistributed because of
+license and benchmark-integrity constraints. This repository provides the
+metadata, sanitized outputs, aggregate metrics, bootstrap artifacts, and figure
+scripts needed to verify the reported results.
