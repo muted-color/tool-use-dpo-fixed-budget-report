@@ -1,10 +1,11 @@
-# Tool-Use DPO Negative Sources: Artifact Reproducibility
+# Tool-Use DPO Negative Sources: Reproducibility Artifacts
 
-This repository is the public artifact companion for the arXiv technical report
-on fixed-budget tool-use DPO negative sources, checkpoints, and Pareto trade-offs.
+This repository contains the reproducibility artifacts for the technical report:
+
+**A Fixed-Budget Empirical Study of Tool-Use DPO: Negative Sources, Checkpoints,
+and Pareto Trade-offs**
 
 ```text
-Paper: A Fixed-Budget Empirical Study of Tool-Use DPO
 Version: arXiv v1 / draft-v5-derived artifact packet
 Base model family: Qwen3
 Shared SFT reference: r004
@@ -13,29 +14,45 @@ Primary metrics: BFCL core, When2Call behavior accuracy, When2Call macro F1, IFE
 Main claim: fixed-budget source-native recipe comparison, not source-intrinsic causal ranking
 ```
 
-The manuscript source is maintained separately under the project `paper/`
-directory. This repository intentionally contains only the minimal public
-artifacts needed to reproduce and verify the report's tables, bootstrap
-summaries, and Pareto figures.
+The scope is artifact-level reproduction: verifying the report's released
+tables, bootstrap summaries, contamination/overlap checks, and Pareto figures
+from aggregate and sanitized files.
+
+## Release Status
+
+| Check | Status | Command or file |
+|---|---:|---|
+| Artifact manifest integrity | Pass | `python scripts/verify_artifacts.py` |
+| Contamination/overlap release checks | Pass | `python scripts/verify_overlap.py` |
+| Table reproduction | Supported | `python scripts/reproduce_tables.py` |
+| Figure reproduction | Supported | `python scripts/reproduce_figures.py` |
+| Grouped bootstrap recomputation | Supported | `python scripts/compute_grouped_bootstrap.py --bootstrap-iterations 1000` |
+| Raw/private data exclusion policy | Documented | `docs/redistribution_policy.md` |
 
 ## What Is Included
 
-- Aggregate Stage3d and Stage4 CSV/JSON artifacts used by the report.
-- Bootstrap CI summaries for source-axis and clean-vs-unfiltered comparisons.
-- Pareto point tables and a regenerated SVG figure.
-- Contamination/overlap summaries released as aggregate hash-check artifacts.
-- Run inventory, DPO/evaluation configuration notes, and benchmark/version notes.
-- License, data access, redistribution, and claim-scope documentation.
-- Verification scripts that check artifact presence and public-release hygiene.
+- Aggregate Stage3d and Stage4 CSV/JSON artifacts used by the report tables.
+- Sanitized per-example evaluation rows with prompt IDs/hashes, metric flags,
+  generated-output hashes, and token counts.
+- Pairwise and grouped bootstrap CI summaries.
+- Pareto point tables, figure inputs, and regenerated SVG figures.
+- Stage1/Stage2 contamination and Stage3d train-pool overlap summaries released
+  as hash-only artifacts.
+- Run inventory, DPO/evaluation configuration notes, benchmark versions, and
+  exact evaluator/parser notes where recoverable from local artifacts.
+- License, data access, redistribution, reference verification, and claim-scope
+  documentation.
+- Release-readiness notes for the report-linked artifact packet.
+- Verification scripts for artifact integrity, release hygiene, tables, figures,
+  and overlap checks.
 
-## What Is Not Included
+## Data Boundary
 
-- The paper LaTeX source, bibliography, or build directory.
-- Raw benchmark data or benchmark prompt text.
-- Full processed DPO pair files such as `pairs_*.jsonl`.
-- Raw per-example generation outputs derived from benchmark prompts.
-- Private audit keys, `.env` files, RunPod secrets, API keys, or credentials.
-- Model, LoRA, or adapter weights such as `*.safetensors`.
+The repository does not redistribute raw benchmark data, benchmark prompt text,
+full processed DPO pair files, raw generated benchmark outputs, private audit
+materials, credentials, or model/adapter weights. See
+`docs/redistribution_policy.md` and `docs/data_availability_statement.md` for
+the source-specific policy.
 
 ## Quick Start
 
@@ -118,6 +135,18 @@ reported point estimates.
 
 Use `CITATION.cff` for citation metadata. Dataset and benchmark attribution rules
 are documented in `docs/data_license_table.md` and `docs/data_and_model_access.md`.
+
+## Release Notes for Readers
+
+- The released per-example files are sanitized: they do not include prompt text,
+  tool schemas, generated text, or benchmark raw data.
+- Bootstrap intervals use `prompt_id` as the grouped resampling unit with 1000
+  iterations and percentile confidence intervals.
+- Stage3d comparisons are fixed-budget, source-native recipe comparisons. They
+  should not be read as source-intrinsic causal rankings.
+- The public artifact manifest records file sizes and SHA-256 hashes in
+  `configs/artifact_manifest.json`.
+- The pre-release checklist is summarized in `docs/release_readiness.md`.
 
 ## Data Availability Statement
 

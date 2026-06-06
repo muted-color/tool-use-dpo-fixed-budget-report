@@ -2,7 +2,9 @@
 
 Last checked: 2026-06-05
 
-This file records bibliography identifiers for `report/stage4_pareto_paper_draft_v5.md`. It is kept outside the paper draft so the public manuscript can keep only the References section.
+This file records bibliography identifiers used by the accompanying technical
+report. It is included here so readers can verify reference metadata without
+needing unreleased manuscript working files.
 
 | Paper or resource | Verified record | Identifier | URL |
 |---|---|---|---|

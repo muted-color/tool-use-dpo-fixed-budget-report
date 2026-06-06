@@ -2,6 +2,8 @@ cff-version: 1.2.0
 title: "A Fixed-Budget Empirical Study of Tool-Use DPO: Negative Sources, Checkpoints, and Pareto Trade-offs"
 message: "If you use these artifacts, please cite the accompanying technical report."
 type: dataset
+url: "https://github.com/muted-color/tool-use-dpo-negative-sources"
+repository-code: "https://github.com/muted-color/tool-use-dpo-negative-sources"
 authors:
   - family-names: Ahn
     given-names: Ilho

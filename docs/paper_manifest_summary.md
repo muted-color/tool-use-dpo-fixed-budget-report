@@ -1,7 +1,8 @@
 # Paper-Ready Manifest Summary
 
-Use this table to update `paper/main.tex` after the repository manifest is final.
-Do not copy values from historical `report/stage4_*_paper_draft*.md`.
+Use this table as the paper-ready summary of the finalized repository manifest.
+Values here are derived from released artifacts and manifest files in this
+repository, not from historical draft snapshots.
 
 | Evaluation surface | Role | Source/split/snapshot | n | Evaluator/parser | Metric definition | Seed/decoding | Released artifact path |
 |---|---|---|---:|---|---|---|---|
