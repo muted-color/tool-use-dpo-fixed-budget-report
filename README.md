@@ -1,26 +1,34 @@
-# Tool-Use DPO Negative Sources
+# Reporting Tool-Use DPO Under Fixed Budgets
 
-Reproducibility materials for the technical report:
+Artifact repository for the technical report:
 
 **Reporting Tool-Use DPO Under Fixed Budgets: Recipe--Checkpoint Profiles and
 Guardrail Trade-offs**
 
-```text
-Base model family: Qwen3
-Shared SFT reference: r004
-Main DPO/control runs: r028, r029, s3d001, s3d002
-Post-hoc support runs: s5r002, s6r002-s6r005, s8r005-s8r006
-Primary metrics: BFCL core, When2Call behavior accuracy, When2Call macro F1, IFEval prompt-strict
-Main claim: fixed-budget source-native recipe comparison, not source-intrinsic causal ranking
-```
-
-The goal here is narrow: make the report's tables, confidence intervals,
-overlap checks, and Pareto figures easy to verify from released artifacts.
+This repository is the public verification package for the report. Its goal is
+narrow: make the report's tables, confidence intervals, overlap checks, and
+Pareto figures easy to verify from released artifacts.
 
 This is not an end-to-end training release. Full DPO retraining and raw
 benchmark reconstruction require upstream dataset access, restricted raw
 artifacts, and substantial GPU resources, so they are outside the default public
 scope.
+
+## Evidence Map
+
+| Report evidence | What to inspect | Main public path |
+|---|---|---|
+| Source-axis recipe profile | BFCL and When2Call deltas for clean structural vs behavior-oriented negatives | `artifacts/stage4/bootstrap/pairwise_bootstrap_ci.csv` |
+| Clean-vs-unfiltered controls | Same-budget filtering comparison | `artifacts/stage4/bootstrap/pairwise_bootstrap_ci.csv` |
+| Checkpoint and guardrail trade-off | IFEval prompt-strict deltas and Pareto inputs | `artifacts/stage4/pareto/`, `artifacts/stage4/bootstrap/ifeval_prompt_strict_bootstrap_ci.csv` |
+| Pair-quality diagnostics | LLM-audited source-risk summaries and claim scope | `artifacts/stage4/stage3b/`, `docs/claims_and_limitations.md` |
+| Mixed-source appendix ablation | Post-hoc mixed-source sanity check | `artifacts/stage5/mixed_source/` |
+| Training-seed stability | Fixed-pair-pool source-axis sign stability | `artifacts/stage6/multiseed/` |
+| Direct-answer coverage audit | Public When2Call direct-answer coverage limitation | `artifacts/stage7/direct_answer/`, `docs/direct_answer_coverage.md` |
+| Independent pair-pool robustness | One pool-B replicate for the two main clean conditions | `artifacts/stage8/data_sampling/` |
+
+Internal run IDs are retained for traceability only. They are not intended to be
+the public claim names; see `docs/evidence_map.md` for the trace mapping.
 
 ## What You Can Check
 
@@ -41,10 +49,10 @@ scope.
   generated-output hashes, and token counts.
 - Pairwise and grouped bootstrap summaries.
 - Pareto point tables, figure inputs, and regenerated SVG figures.
-- Post-Stage4 mixed-source appendix ablation summaries.
-- Stage6 multi-seed source-axis sign-stability summaries.
-- Stage7 direct-answer coverage audit and auxiliary direct-answer diagnostics.
-- Stage8 independent pair-pool data-sampling robustness summaries.
+- Mixed-source appendix ablation summaries.
+- Multi-seed source-axis sign-stability summaries.
+- Direct-answer coverage audit and auxiliary direct-answer diagnostics.
+- Independent pair-pool data-sampling robustness summaries.
 - Hash-only contamination and train-pool overlap reports.
 - Run inventory, benchmark versions, DPO/evaluation config notes, and recovered
   evaluator/parser details.
@@ -99,9 +107,9 @@ the public release.
 python scripts/verify_overlap.py
 ```
 
-Checks the released Stage1/Stage2 contamination reports and Stage3d train-pool
-overlap summaries. If the private pair artifacts are available locally, they can
-be recomputed with:
+Checks the released contamination reports and fixed-budget train-pool overlap
+summaries. If the private pair artifacts are available locally, they can be
+recomputed with:
 
 ```bash
 python scripts/verify_overlap.py --workspace-root .. --write-artifacts
@@ -143,18 +151,8 @@ text, tool schemas, generated text, or benchmark raw data.
 `results/aggregate/` contains absolute and delta metrics used to trace the
 reported point estimates.
 
-`artifacts/stage7/direct_answer/` contains the public When2Call direct-answer
-coverage audit and auxiliary existing-artifact direct-answer diagnostics. These
-files document that the exposed public When2Call labeled splits used here have
-0 direct-answer gold rows; they do not replace a matched When2Call
-direct-answer slice.
-
-`artifacts/stage8/data_sampling/` contains sanitized fixed summaries for the
-independent pool-B replicate. It documents that noised_gold and behavior pool-B
-gates passed, DPO/eval completed for `s8r005/s8r006`, and pool-A plus pool-B
-source-axis signs matched the expected direction in 12/12 point-estimate sign
-checks. It is scoped data-sampling robustness for the two main clean
-conditions, not broad distribution robustness or source-intrinsic ranking.
+`docs/evidence_map.md` maps paper-facing evidence names to public artifact
+paths, internal trace IDs, and interpretation boundaries.
 
 ## Citation
 
@@ -165,21 +163,10 @@ notes are in `docs/data_license_table.md` and `docs/data_and_model_access.md`.
 
 - Bootstrap intervals use `prompt_id` as the grouped resampling unit with 1000
   iterations.
-- Stage3d comparisons are fixed-budget, source-native recipe comparisons. They
+- The main recipe comparisons are fixed-budget, source-native comparisons. They
   should not be read as source-intrinsic causal rankings.
 - `configs/artifact_manifest.json` records file sizes and SHA-256 hashes for the
   released files.
-- `artifacts/stage5/mixed_source/` contains sanitized summary artifacts for the
-  post-Stage4 mixed-source appendix ablation; it is reviewer-defense evidence,
-  not part of the main Stage4 claim.
-- `artifacts/stage6/multiseed/` contains sanitized summary artifacts for the
-  post-Stage5 training-seed robustness check. It supports source-axis sign
-  stability across fixed pair pools, not data-sampling robustness.
-- `artifacts/stage7/direct_answer/` contains the direct-answer coverage audit.
-  Stage7 is a scope/coverage diagnostic, not a new DPO training result.
-- `artifacts/stage8/data_sampling/` contains sanitized summary artifacts for
-  one independent pair-pool data-sampling robustness replicate. It is scoped to
-  clean noised_gold and clean behavior.
 - The pre-release checklist is summarized in `docs/release_readiness.md`.
 
 ## Data Availability Statement

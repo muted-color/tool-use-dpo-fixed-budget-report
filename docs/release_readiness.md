@@ -43,6 +43,8 @@ repository, not as a complete end-to-end training pipeline.
 
 ## Evidence Files
 
+- `docs/evidence_map.md`: public evidence names, artifact paths, trace IDs, and
+  interpretation boundaries.
 - `configs/artifact_manifest.json`: file sizes and SHA-256 hashes for released
   artifacts.
 - `manifests/benchmark_manifest.yaml`: benchmark versions, slices, evaluator
