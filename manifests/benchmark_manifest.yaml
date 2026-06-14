@@ -107,6 +107,17 @@ when2call:
   released_artifacts:
     per_example_pattern: results/per_example/primary/*_<checkpoint>.csv rows with task=when2call
     aggregate_metrics: results/aggregate/main_metrics_absolute.csv and results/aggregate/main_metrics_delta_vs_sft.csv
+    direct_answer_coverage_audit: artifacts/stage7/direct_answer/when2call_direct_answer_audit.csv
+    auxiliary_direct_answer_diagnostics: artifacts/stage7/direct_answer/existing_direct_answer_summary.csv
+  stage7_public_config_audit:
+    purpose: direct-answer coverage diagnostic only
+    public_configs_checked:
+      - test
+      - train_sft
+      - train_pref
+    public_rows_checked: 27952
+    direct_answer_gold_rows_found: 0
+    interpretation: direct-answer behavior remains auxiliary rather than a matched When2Call direct-answer slice
 
 sft_dev_auxiliary:
   evaluation_surface: SFT-dev auxiliary diagnostics

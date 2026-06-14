@@ -42,6 +42,16 @@ missing revisions. The machine-readable source of truth is
 - Seed rule: `20260603 + comparison_metric_index * 97`
 - Scope: evaluation-sample uncertainty only; does not include training-seed, DPO stochasticity, or independently resampled data-pool variance.
 
+## Stage7 Direct-Answer Coverage Audit
+
+- Public audit artifact: `artifacts/stage7/direct_answer/when2call_direct_answer_audit.csv`
+- Public `nvidia/When2Call` configs checked: `test`, `train_sft`, `train_pref`
+- Public rows checked: 27952
+- Direct-answer gold rows found in exposed labeled configs: 0
+- Interpretation: the reported When2Call metric covers the represented gold
+  labels in the frozen slice. Direct-answer behavior remains an auxiliary
+  diagnostic rather than a matched When2Call direct-answer slice.
+
 ## Recovered FunctionChat-Bench Snapshot
 
 - Stage1 originally recorded FunctionChat-Bench as `github_main_2026-05-28` because the loader read `https://raw.githubusercontent.com/kakao/FunctionChat-Bench/main/data/*.jsonl` directly.

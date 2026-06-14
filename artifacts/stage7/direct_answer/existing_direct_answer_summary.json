@@ -1,0 +1,13 @@
+{
+  "delta_csv": "existing_direct_answer_delta_vs_r004.csv",
+  "input_targets": 11,
+  "interpretation": "This is an existing-artifact direct-answer diagnostic. It does not replace a true When2Call direct-answer slice, because public When2Call configs audited in s7r002 contain no direct-answer gold rows.",
+  "run_id": "s7r003",
+  "slices": [
+    "sft_dev_direct_answer",
+    "bfcl_relevance_direct_answer",
+    "combined_existing_direct_answer"
+  ],
+  "status": "complete",
+  "summary_csv": "existing_direct_answer_summary.csv"
+}

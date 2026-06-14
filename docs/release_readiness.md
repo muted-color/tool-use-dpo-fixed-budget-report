@@ -21,16 +21,15 @@ Run from the repository root:
 python -m pip install -e '.[dev]'
 python scripts/verify_artifacts.py
 python scripts/verify_overlap.py
+python scripts/compute_grouped_bootstrap.py --bootstrap-iterations 1000
+python scripts/compute_ifeval_bootstrap.py --bootstrap-iterations 1000
 python scripts/reproduce_tables.py
 python scripts/reproduce_figures.py
 pytest
 ```
 
-Optional grouped bootstrap recomputation:
-
-```bash
-python scripts/compute_grouped_bootstrap.py --bootstrap-iterations 1000
-```
+The bootstrap commands regenerate the released pairwise and IFEval prompt-strict
+confidence-interval CSV files from sanitized per-example outputs.
 
 ## Release Boundary
 
@@ -51,3 +50,5 @@ repository, not as a complete end-to-end training pipeline.
 - `docs/paper_manifest_summary.md`: paper-ready evaluation surface summary.
 - `docs/contamination_overlap.md`: contamination and train-pool overlap scope.
 - `docs/redistribution_policy.md`: release boundary and source-specific policy.
+- `artifacts/stage8/data_sampling/`: fixed summary artifacts for the scoped
+  independent pair-pool data-sampling robustness replicate.

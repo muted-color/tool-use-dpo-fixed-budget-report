@@ -1,0 +1,63 @@
+{
+  "configs": [
+    "test",
+    "train_sft",
+    "train_pref"
+  ],
+  "dataset": "nvidia/When2Call",
+  "interpretation": "Public When2Call configs do not provide direct-answer gold rows under correct_answer=direct; Stage7 should not spend GPU on a nonexistent direct-answer slice from this dataset.",
+  "rows": [
+    {
+      "all_correct_answer_counts": "{\"cannot_answer\": 100, \"request_for_info\": 100, \"tool_call\": 100}",
+      "cannot_answer_count": 100,
+      "config": "test",
+      "dataset": "nvidia/When2Call",
+      "direct_count": 0,
+      "none_count": 0,
+      "request_for_info_count": 100,
+      "row_count": 300,
+      "split": "llm_judge",
+      "tool_call_count": 100
+    },
+    {
+      "all_correct_answer_counts": "{\"cannot_answer\": 1295, \"request_for_info\": 1062, \"tool_call\": 1295}",
+      "cannot_answer_count": 1295,
+      "config": "test",
+      "dataset": "nvidia/When2Call",
+      "direct_count": 0,
+      "none_count": 0,
+      "request_for_info_count": 1062,
+      "row_count": 3652,
+      "split": "mcq",
+      "tool_call_count": 1295
+    },
+    {
+      "all_correct_answer_counts": "{\"None\": 15000}",
+      "cannot_answer_count": 0,
+      "config": "train_sft",
+      "dataset": "nvidia/When2Call",
+      "direct_count": 0,
+      "none_count": 15000,
+      "request_for_info_count": 0,
+      "row_count": 15000,
+      "split": "train",
+      "tool_call_count": 0
+    },
+    {
+      "all_correct_answer_counts": "{\"None\": 9000}",
+      "cannot_answer_count": 0,
+      "config": "train_pref",
+      "dataset": "nvidia/When2Call",
+      "direct_count": 0,
+      "none_count": 9000,
+      "request_for_info_count": 0,
+      "row_count": 9000,
+      "split": "train",
+      "tool_call_count": 0
+    }
+  ],
+  "run_id": "s7r002",
+  "status": "direct_answer_gold_absent",
+  "total_direct_gold_rows": 0,
+  "total_rows_checked": 27952
+}

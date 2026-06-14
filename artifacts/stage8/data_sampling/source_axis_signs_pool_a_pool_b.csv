@@ -1,0 +1,13 @@
+comparison,checkpoint,metric,noised_gold_score,behavior_score,noised_minus_behavior,observed_sign,expected_sign,sign_matches_expected
+pool_a_original,step50,BFCL_core_accuracy,0.7133333333333334,0.68,0.033333333333333326,1,1,True
+pool_a_original,step50,When2Call_behavior_accuracy,0.5666666666666667,0.6333333333333333,-0.06666666666666665,-1,-1,True
+pool_a_original,step50,When2Call_macro_F1,0.4765297500820921,0.5296360748883332,-0.05310632480624111,-1,-1,True
+pool_a_original,best,BFCL_core_accuracy,0.6933333333333334,0.66,0.033333333333333326,1,1,True
+pool_a_original,best,When2Call_behavior_accuracy,0.5766666666666667,0.64,-0.06333333333333335,-1,-1,True
+pool_a_original,best,When2Call_macro_F1,0.47945062669076555,0.5277754413117107,-0.04832481462094518,-1,-1,True
+pool_b_replicate,step50,BFCL_core_accuracy,0.7133333333333334,0.68,0.033333333333333326,1,1,True
+pool_b_replicate,step50,When2Call_behavior_accuracy,0.57,0.6333333333333333,-0.06333333333333335,-1,-1,True
+pool_b_replicate,step50,When2Call_macro_F1,0.4785983873734775,0.5289778428660538,-0.050379455492576275,-1,-1,True
+pool_b_replicate,best,BFCL_core_accuracy,0.7033333333333334,0.6633333333333333,0.040000000000000036,1,1,True
+pool_b_replicate,best,When2Call_behavior_accuracy,0.5766666666666667,0.6433333333333333,-0.06666666666666665,-1,-1,True
+pool_b_replicate,best,When2Call_macro_F1,0.47455061692935535,0.5328096426935104,-0.05825902576415504,-1,-1,True

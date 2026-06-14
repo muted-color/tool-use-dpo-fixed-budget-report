@@ -1,0 +1,3 @@
+run_id,source,status,candidate_rows,selected_rows,selected_pair_id_overlap,selected_content_hash_overlap,selected_prompt_id_overlap,holdout_accept_rate,holdout_chosen_reference_suspect_rate,dpo_allowed
+s8r002,noised_gold,pass,9988,3000,0,0,401,0.97,0.01,True
+s8r003c,behavior,pass,4294,3000,0,0,1337,0.99,0.01,True

@@ -1,0 +1,32 @@
+{
+  "checked_sign_rows": 12,
+  "claim_scope": "independent_pair_pool_data_sampling_robustness_for_two_main_clean_conditions",
+  "created_at": "2026-06-14T11:15:45.187354+00:00",
+  "experiment_id": "exp_13_stage8_data_sampling_robustness",
+  "inputs": {
+    "pool_a_runs": [
+      "r028",
+      "r029"
+    ],
+    "pool_b_gate_runs": [
+      "s8r002",
+      "s8r003c"
+    ],
+    "pool_b_runs": [
+      "s8r005",
+      "s8r006"
+    ]
+  },
+  "missing_inputs": [],
+  "outputs": [
+    "artifacts/stage8/data_sampling/run_summary.csv",
+    "artifacts/stage8/data_sampling/source_axis_signs_pool_a_pool_b.csv",
+    "artifacts/stage8/data_sampling/pool_b_gate_summary.csv",
+    "artifacts/stage8/data_sampling/summary.md",
+    "artifacts/stage8/data_sampling/manifest.json"
+  ],
+  "run_id": "s8r007",
+  "sign_failures": 0,
+  "stage": "Stage8",
+  "status": "complete_data_sampling_source_axis_sign_stable"
+}

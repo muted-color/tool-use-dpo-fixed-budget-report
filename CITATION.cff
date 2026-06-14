@@ -1,5 +1,5 @@
 cff-version: 1.2.0
-title: "A Fixed-Budget Empirical Study of Tool-Use DPO: Negative Sources, Checkpoints, and Pareto Trade-offs"
+title: "Reporting Tool-Use DPO Under Fixed Budgets: Recipe--Checkpoint Profiles and Guardrail Trade-offs"
 message: "If you use these artifacts, please cite the accompanying technical report."
 type: dataset
 url: "https://github.com/muted-color/tool-use-dpo-negative-sources"

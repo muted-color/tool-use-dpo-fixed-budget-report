@@ -1,0 +1,5 @@
+dataset,config,split,row_count,direct_count,tool_call_count,cannot_answer_count,request_for_info_count,none_count,all_correct_answer_counts
+nvidia/When2Call,test,llm_judge,300,0,100,100,100,0,"{""cannot_answer"": 100, ""request_for_info"": 100, ""tool_call"": 100}"
+nvidia/When2Call,test,mcq,3652,0,1295,1295,1062,0,"{""cannot_answer"": 1295, ""request_for_info"": 1062, ""tool_call"": 1295}"
+nvidia/When2Call,train_sft,train,15000,0,0,0,0,15000,"{""None"": 15000}"
+nvidia/When2Call,train_pref,train,9000,0,0,0,0,9000,"{""None"": 9000}"
