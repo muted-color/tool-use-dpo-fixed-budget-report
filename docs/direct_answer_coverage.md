@@ -9,18 +9,20 @@ and it does not make the When2Call result a balanced four-label estimate.
 The released audit checks the exposed public `nvidia/When2Call` configurations
 used in this project.
 
-| Config | Split | Rows | Direct-answer gold rows | Observed labeled gold values |
-|---|---|---:|---:|---|
-| `test` | `llm_judge` | 300 | 0 | 100 `tool_call`, 100 `request_for_info`, 100 `cannot_answer` |
-| `test` | `mcq` | 3652 | 0 | 1295 `tool_call`, 1062 `request_for_info`, 1295 `cannot_answer` |
-| `train_sft` | `train` | 15000 | 0 | public `correct_answer` is `None` |
-| `train_pref` | `train` | 9000 | 0 | public `correct_answer` is `None` |
+| Config | Split | Rows | Direct-answer gold status | Observed labeled gold values |
+|---|---|---:|---|---|
+| `test` | `llm_judge` | 300 | 0 labeled rows | 100 `tool_call`, 100 `request_for_info`, 100 `cannot_answer` |
+| `test` | `mcq` | 3652 | 0 labeled rows | 1295 `tool_call`, 1062 `request_for_info`, 1295 `cannot_answer` |
+| `train_sft` | `train` | 15000 | unlabeled | public `correct_answer` is `None` |
+| `train_pref` | `train` | 9000 | unlabeled | public `correct_answer` is `None` |
 
 The paper's frozen When2Call evaluation slice therefore covers represented
-tool-call, follow-up-question, and unable-to-answer gold labels. Direct-answer
-is included by the frozen evaluator as a zero-support class because the model
-can still predict that label, but the metric should not be interpreted as a
-balanced four-class estimate.
+tool-call, follow-up-question, and unable-to-answer gold labels. The public
+training configurations audited here do not expose `correct_answer` labels, so
+they are not evidence of labeled direct-answer coverage. Direct-answer is
+included by the frozen evaluator as a zero-support class because the model can
+still predict that label, but the metric should not be interpreted as a balanced
+four-class estimate.
 
 ## Auxiliary Existing-Artifact Diagnostics
 
@@ -47,9 +49,10 @@ are not part of the main Pareto claim.
 
 Supported wording:
 
-> The public When2Call configurations audited here contain no direct-answer gold
-> rows in the exposed labeled splits, so direct-answer behavior remains an
-> auxiliary diagnostic rather than a matched When2Call behavior slice.
+> The exposed labeled public When2Call splits audited here contain no
+> direct-answer gold rows, while the audited training configs do not expose
+> `correct_answer` labels. Direct-answer behavior therefore remains an auxiliary
+> diagnostic rather than a matched When2Call behavior slice.
 
 Unsupported wording:
 

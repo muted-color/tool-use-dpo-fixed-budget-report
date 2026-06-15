@@ -117,6 +117,8 @@ when2call:
       - train_pref
     public_rows_checked: 27952
     direct_answer_gold_rows_found: 0
+    labeled_split_interpretation: exposed labeled test splits contain 0 direct-answer gold rows
+    train_config_interpretation: audited train configs expose correct_answer=None rather than labeled gold behavior classes
     interpretation: direct-answer behavior remains auxiliary rather than a matched When2Call direct-answer slice
 
 sft_dev_auxiliary:

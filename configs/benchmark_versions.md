@@ -48,6 +48,8 @@ missing revisions. The machine-readable source of truth is
 - Public `nvidia/When2Call` configs checked: `test`, `train_sft`, `train_pref`
 - Public rows checked: 27952
 - Direct-answer gold rows found in exposed labeled configs: 0
+- Train configs audited here expose `correct_answer=None` rather than labeled
+  gold behavior classes.
 - Interpretation: the reported When2Call metric covers the represented gold
   labels in the frozen slice. Direct-answer behavior remains an auxiliary
   diagnostic rather than a matched When2Call direct-answer slice.

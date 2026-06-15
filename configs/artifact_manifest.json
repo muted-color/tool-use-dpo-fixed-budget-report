@@ -282,8 +282,8 @@
     },
     {
       "path": "configs/benchmark_versions.md",
-      "bytes": 4522,
-      "sha256": "8d052a09f5f5b3a9e0c75fe95cdaf8762755b9143f438f595e7d6bdbf9cd5250"
+      "bytes": 4625,
+      "sha256": "ac8e741df329c6f4eb478778abd21c824bac8c7baef5cfb8803f2925e38d6341"
     },
     {
       "path": "configs/dpo_eval_config.json",
@@ -337,8 +337,8 @@
     },
     {
       "path": "docs/direct_answer_coverage.md",
-      "bytes": 2525,
-      "sha256": "6775c0cdd42bd5c7da5be05bf3c9977ebf16384b6d0f3b156f7f83bf95bb56ad"
+      "bytes": 2776,
+      "sha256": "64583afcfa287623d33baec5545ab2a3be03c1dfe9e833e6ce5883d323fd84fa"
     },
     {
       "path": "docs/evidence_map.md",
@@ -357,8 +357,8 @@
     },
     {
       "path": "docs/paper_manifest_summary.md",
-      "bytes": 5684,
-      "sha256": "af4c76ea9e6e5e3a419aab6101de59c9f41414d40257e2ebb06072e7d53f8449"
+      "bytes": 5869,
+      "sha256": "c5e1eca9a7d696614663775cc6631dd96511cff704905c066d719e54dfa40d58"
     },
     {
       "path": "docs/redistribution_policy.md",
@@ -392,8 +392,8 @@
     },
     {
       "path": "manifests/benchmark_manifest.yaml",
-      "bytes": 12402,
-      "sha256": "cd176aba30beb35a495c1390dcccd60198c3c4fc8a2c843c1f768c813a30cbf9"
+      "bytes": 12622,
+      "sha256": "040ea8652868703386d77fd24a129b53bc62369607ba5df91a0128d588d74cc4"
     },
     {
       "path": "manifests/eval/category_distribution.csv",
