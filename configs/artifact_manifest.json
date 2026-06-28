@@ -27,8 +27,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 7740,
-      "sha256": "7a0dbfe795336526b0bbe0a77dc4ffff357cb519859dd064f765c3ef44e7df3f"
+      "bytes": 7764,
+      "sha256": "5bb3508686dc25dff9890663fd2590b0652f6406a512075a1d4ba4eda8502a89"
     },
     {
       "path": "THIRD_PARTY_NOTICES.md",
@@ -409,6 +409,11 @@
       "path": "manifests/run_manifest.yaml",
       "bytes": 1397,
       "sha256": "804dbf31f646d0f6397bd994746072b8b6833a996a3468628d1702b8a36ef9d0"
+    },
+    {
+      "path": "paper.pdf",
+      "bytes": 160250,
+      "sha256": "923d459c9140d2fe227bd1ebec5055d62e90cb7177607737a8b1176d57810554"
     },
     {
       "path": "pyproject.toml",

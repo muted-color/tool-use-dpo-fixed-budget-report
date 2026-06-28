@@ -5,6 +5,8 @@ Artifact repository for the technical report:
 **Reporting Tool-Use DPO Under Fixed Budgets: Recipe--Checkpoint Profiles and
 Guardrail Trade-offs**
 
+[Paper PDF](paper.pdf)
+
 This repository is the public verification package for the report. Its goal is
 narrow: make the report's tables, confidence intervals, overlap checks, and
 Pareto figures easy to verify from released artifacts.
